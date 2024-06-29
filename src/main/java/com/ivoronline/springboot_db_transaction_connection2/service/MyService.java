@@ -11,8 +11,8 @@ import java.sql.SQLException;
 public class MyService {
 
   //PROPERTIES
-  @Autowired private MyRepository myRepository;
   @Autowired private Connection   connection;
+  @Autowired private MyRepository myRepository;
 
   //=========================================================================================================
   // INSERT
