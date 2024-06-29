@@ -11,27 +11,24 @@ import java.sql.SQLException;
 public class MyService {
 
   //PROPERTIES
-  @Autowired private MyRepository repository;
-  @Autowired private DataSource dataSource;
+  @Autowired private MyRepository myRepository;
+  @Autowired private Connection   connection;
 
   //=========================================================================================================
   // INSERT
   //=========================================================================================================
   public void insert() throws SQLException {
 
-    //GET DB CONNECTION
-    Connection connection = dataSource.getConnection();
-
     //TRANSACTION
     try {
 
       //START TRANSACTION
-      connection.setAutoCommit(false);
+      connection.setAutoCommit(true);
 
       //EXECUTE SQL STATEMENTS (Inserts both Records or none)
       for (int i = 1; i <= 2; i++) {
         if(i==2) { throw new Exception("Exception"); }
-        repository.insert(connection, "Person " + i, 10 * i);
+        myRepository.insert("Person " + i, 10 * i);
       }
 
       //COMMIT TRANSACTION

@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class MyController {
 
   //PROPERTIES
-  @Autowired private MyService personService;
+  @Autowired private MyService myService;
 
   //=========================================================================================================
   // INSERT
@@ -19,7 +19,7 @@ public class MyController {
   @ResponseBody
   @GetMapping("/insert")
   public String insert() throws SQLException {
-    personService.insert();
+    myService.insert();
     return "Records Inserted";
   }
 
